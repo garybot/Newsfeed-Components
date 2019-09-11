@@ -141,11 +141,13 @@ function createArticle(data) {
     paragraphs.push(document.createElement('p'));
   }
   let span = document.createElement('span');
+  let close = document.createElement('span');
 
   // compose elements
   article.appendChild(title);
   paragraphs.forEach(p => article.appendChild(p));
   article.appendChild(span);
+  article.appendChild(close);
 
   // set content
   title.textContent = data.title;
@@ -154,19 +156,40 @@ function createArticle(data) {
   paragraphs[2].textContent = data.secondParagraph;
   paragraphs[3].textContent = data.thirdParagraph;
   span.textContent = "\u2b0d";
+  close.textContent = '\u2a2f';
 
   // set classes
   article.classList.add('article');
   paragraphs[0].classList.add('date');
   span.classList.add('expandButton');
+  close.classList.add('close');
 
   // add funtionality
   span.addEventListener('click', event => {
     article.classList.toggle('article-open');
   });
+  close.addEventListener('click', event => {
+    article.style.display = 'none';
+  })
+
   return article;
 }
 
 const articles = document.querySelector('.articles');
 const articleElements = data.map(info => createArticle(info));
 articleElements.forEach(article => articles.appendChild(article));
+
+
+// class Article(data) {
+
+// }
+
+// stretch goal
+
+// function saveArticle(info) {
+//   let article = {};
+// }
+
+// article submission form
+
+// const form = document.createElement('form');

@@ -93,24 +93,18 @@ const data = [
           Paroxysm of global death the sky calls to us courage of our questions decipherment extraplanetary made in the interiors of collapsing stars. 
           A still more glorious dawn awaits another world permanence of the stars citizens of distant epochs made in the interiors of collapsing stars 
           take root and flourish. From which we spring extraordinary claims require extraordinary evidence with pretty stories for which there's little 
-          good evidence Sea of Tranquility Sea of Tranquility another world?
-
-`,
+          good evidence Sea of Tranquility Sea of Tranquility another world?`,
 
     secondParagraph: `White dwarf light years of brilliant syntheses take root and flourish across the centuries Rig Veda? Star stuff harvesting star 
           light gathered by gravity not a sunrise but a galaxyrise bits of moving fluff vastness is bearable only through love Jean-François Champollion. 
           Permanence of the stars Vangelis the only home we've ever known inconspicuous motes of rock and gas the ash of stellar alchemy a mote of dust 
-          suspended in a sunbeam.
-
-`,
+          suspended in a sunbeam.`,
 
     thirdParagraph: `Galaxies explorations Tunguska event stirred by starlight dispassionate extraterrestrial observer Rig Veda. Drake Equation kindling 
           the energy hidden in matter encyclopaedia galactica vastness is bearable only through love at the edge of forever how far away. A still more 
           glorious dawn awaits Drake Equation vanquish the impossible how far away tingling of the spine Orion's sword. Made in the interiors of collapsing 
           stars encyclopaedia galactica not a sunrise but a galaxyrise from which we spring encyclopaedia galactica encyclopaedia galactica and billions upon 
-          billions upon billions upon billions upon billions upon billions upon billions.
-
-`
+          billions upon billions upon billions upon billions upon billions upon billions.`
   }
 ];
 
@@ -159,16 +153,17 @@ function createArticle(data) {
   paragraphs[1].textContent = data.firstParagraph;
   paragraphs[2].textContent = data.secondParagraph;
   paragraphs[3].textContent = data.thirdParagraph;
+  span.textContent = "\u2b0d";
 
   // set classes
+  article.classList.add('article');
   paragraphs[0].classList.add('date');
   span.classList.add('expandButton');
 
   // add funtionality
   span.addEventListener('click', event => {
     article.classList.toggle('article-open');
-  })
-
+  });
   return article;
 }
 

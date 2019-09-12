@@ -179,17 +179,63 @@ const articles = document.querySelector('.articles');
 const articleElements = data.map(info => createArticle(info));
 articleElements.forEach(article => articles.appendChild(article));
 
-
-// class Article(data) {
-
-// }
-
 // stretch goal
 
-// function saveArticle(info) {
-//   let article = {};
-// }
+class Article {
+  constructor(title, date, paragraph1, paragraph2, paragraph3) {
+    this.title = title;
+    this.date = date;
+    this.firstParagraph = paragraph1;
+    this.secondParagraph = paragraph2;
+    this.thirdParagraph = paragraph3;
+  }
+  createElement() {
+    // create elements
+    let article = document.createElement('div');
+    let title = document.createElement('h2');
+    let paragraphs = [];
+    for (let i = 0 ; i < 4; i++) {
+      paragraphs.push(document.createElement('p'));
+    }
+    let span = document.createElement('span');
+    let close = document.createElement('span');
 
+    // compose elements
+    article.appendChild(title);
+    paragraphs.forEach(p => article.appendChild(p));
+    article.appendChild(span);
+    article.appendChild(close);  
+    // set classes
+    article.classList.add('article');
+    paragraphs[0].classList.add('date');
+    span.classList.add('expandButton');
+    close.classList.add('close');
+    // add funtionality
+    span.addEventListener('click', event => {
+      article.classList.toggle('article-open');
+    });
+    close.addEventListener('click', event => {
+      article.style.display = 'none';
+    })
+    // set content
+    title.textContent = this.title;
+    console.log(this.title);
+    console.log(this);
+    paragraphs[0].textContent = this.date;
+    paragraphs[1].textContent = this.firstParagraph;
+    paragraphs[2].textContent = this.secondParagraph;
+    paragraphs[3].textContent = this.thirdParagraph;
+    span.textContent = "\u2b0d";
+    close.textContent = '\u2a2f';
+    // add to DOM
+    articles.appendChild(article);
+  }
+}
+
+const aParagraph = "Pokem ipsum dolor sit amet Wailord Gengar Trapinch sunt in culpa qui officia Oddish Water. Blizzard Charmander Leech Seed Sapphire Boldore bicycle Lucario. Quis nostrud exercitation ullamco laboris nisi Castform Phanpy Youngster wants to fight in a world we must defend Calcium Yamask. Volcano Badge Diglett Mewtwo Strikes Back Fire Pokemon Heroes Machoke Spiritomb. Splash Ash's mother Larvesta Klinklang Gliscor Bronzong Scraggy.";
+
+const anArticle = new Article("Test", "Sep 8, 1988", aParagraph, aParagraph, aParagraph);
+anArticle.createElement();
 // article submission form
 
 // const form = document.createElement('form');

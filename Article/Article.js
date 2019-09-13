@@ -227,15 +227,19 @@ class Article {
     paragraphs[3].textContent = this.thirdParagraph;
     span.textContent = "\u2b0d";
     close.textContent = '\u2a2f';
-    // add to DOM
-    articles.appendChild(article);
+
+    return article
   }
 }
 
 const aParagraph = "Pokem ipsum dolor sit amet Wailord Gengar Trapinch sunt in culpa qui officia Oddish Water. Blizzard Charmander Leech Seed Sapphire Boldore bicycle Lucario. Quis nostrud exercitation ullamco laboris nisi Castform Phanpy Youngster wants to fight in a world we must defend Calcium Yamask. Volcano Badge Diglett Mewtwo Strikes Back Fire Pokemon Heroes Machoke Spiritomb. Splash Ash's mother Larvesta Klinklang Gliscor Bronzong Scraggy.";
 
 const anArticle = new Article("Test", "Sep 8, 1988", aParagraph, aParagraph, aParagraph);
-anArticle.createElement();
+const anArticleNode = anArticle.createElement();
+articles.appendChild(anArticleNode);
+
 // article submission form
 
 // const form = document.createElement('form');
+// const fieldset = document.createElement('fieldset');
+// const title = document.createElement()

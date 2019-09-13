@@ -85,6 +85,26 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Electromagnetism!',
+    date: 'Nov 9, 1934',
+    firstParagraph: `Astonishment Euclid rogue billions upon billions hearts of the stars preserve and cherish that pale blue dot? 
+          Paroxysm of global death the sky calls to us courage of our questions decipherment extraplanetary made in the interiors of collapsing stars. 
+          A still more glorious dawn awaits another world permanence of the stars citizens of distant epochs made in the interiors of collapsing stars 
+          take root and flourish. From which we spring extraordinary claims require extraordinary evidence with pretty stories for which there's little 
+          good evidence Sea of Tranquility Sea of Tranquility another world?`,
+
+    secondParagraph: `White dwarf light years of brilliant syntheses take root and flourish across the centuries Rig Veda? Star stuff harvesting star 
+          light gathered by gravity not a sunrise but a galaxyrise bits of moving fluff vastness is bearable only through love Jean-François Champollion. 
+          Permanence of the stars Vangelis the only home we've ever known inconspicuous motes of rock and gas the ash of stellar alchemy a mote of dust 
+          suspended in a sunbeam.`,
+
+    thirdParagraph: `Galaxies explorations Tunguska event stirred by starlight dispassionate extraterrestrial observer Rig Veda. Drake Equation kindling 
+          the energy hidden in matter encyclopaedia galactica vastness is bearable only through love at the edge of forever how far away. A still more 
+          glorious dawn awaits Drake Equation vanquish the impossible how far away tingling of the spine Orion's sword. Made in the interiors of collapsing 
+          stars encyclopaedia galactica not a sunrise but a galaxyrise from which we spring encyclopaedia galactica encyclopaedia galactica and billions upon 
+          billions upon billions upon billions upon billions upon billions upon billions.`
   }
 ];
 
@@ -112,3 +132,110 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function createArticle(data) {
+  // create elements
+  let article = document.createElement('div');
+  let title = document.createElement('h2');
+  let paragraphs = [];
+  for (let i = 0 ; i < 4; i++) {
+    paragraphs.push(document.createElement('p'));
+  }
+  let span = document.createElement('span');
+  let close = document.createElement('span');
+
+  // compose elements
+  article.appendChild(title);
+  paragraphs.forEach(p => article.appendChild(p));
+  article.appendChild(span);
+  article.appendChild(close);
+
+  // set content
+  title.textContent = data.title;
+  paragraphs[0].textContent = data.date;
+  paragraphs[1].textContent = data.firstParagraph;
+  paragraphs[2].textContent = data.secondParagraph;
+  paragraphs[3].textContent = data.thirdParagraph;
+  span.textContent = "\u2b0d";
+  close.textContent = '\u2a2f';
+
+  // set classes
+  article.classList.add('article');
+  paragraphs[0].classList.add('date');
+  span.classList.add('expandButton');
+  close.classList.add('close');
+
+  // add funtionality
+  span.addEventListener('click', event => {
+    article.classList.toggle('article-open');
+  });
+  close.addEventListener('click', event => {
+    article.style.display = 'none';
+  })
+
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+const articleElements = data.map(info => createArticle(info));
+articleElements.forEach(article => articles.appendChild(article));
+
+// stretch goal
+
+class Article {
+  constructor(title, date, paragraph1, paragraph2, paragraph3) {
+    this.title = title;
+    this.date = date;
+    this.firstParagraph = paragraph1;
+    this.secondParagraph = paragraph2;
+    this.thirdParagraph = paragraph3;
+  }
+  createElement() {
+    // create elements
+    let article = document.createElement('div');
+    let title = document.createElement('h2');
+    let paragraphs = [];
+    for (let i = 0 ; i < 4; i++) {
+      paragraphs.push(document.createElement('p'));
+    }
+    let span = document.createElement('span');
+    let close = document.createElement('span');
+
+    // compose elements
+    article.appendChild(title);
+    paragraphs.forEach(p => article.appendChild(p));
+    article.appendChild(span);
+    article.appendChild(close);  
+    // set classes
+    article.classList.add('article');
+    paragraphs[0].classList.add('date');
+    span.classList.add('expandButton');
+    close.classList.add('close');
+    // add funtionality
+    span.addEventListener('click', event => {
+      article.classList.toggle('article-open');
+    });
+    close.addEventListener('click', event => {
+      article.style.display = 'none';
+    })
+    // set content
+    title.textContent = this.title;
+    console.log(this.title);
+    console.log(this);
+    paragraphs[0].textContent = this.date;
+    paragraphs[1].textContent = this.firstParagraph;
+    paragraphs[2].textContent = this.secondParagraph;
+    paragraphs[3].textContent = this.thirdParagraph;
+    span.textContent = "\u2b0d";
+    close.textContent = '\u2a2f';
+    // add to DOM
+    articles.appendChild(article);
+  }
+}
+
+const aParagraph = "Pokem ipsum dolor sit amet Wailord Gengar Trapinch sunt in culpa qui officia Oddish Water. Blizzard Charmander Leech Seed Sapphire Boldore bicycle Lucario. Quis nostrud exercitation ullamco laboris nisi Castform Phanpy Youngster wants to fight in a world we must defend Calcium Yamask. Volcano Badge Diglett Mewtwo Strikes Back Fire Pokemon Heroes Machoke Spiritomb. Splash Ash's mother Larvesta Klinklang Gliscor Bronzong Scraggy.";
+
+const anArticle = new Article("Test", "Sep 8, 1988", aParagraph, aParagraph, aParagraph);
+anArticle.createElement();
+// article submission form
+
+// const form = document.createElement('form');
